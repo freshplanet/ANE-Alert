@@ -1,7 +1,7 @@
 Air Native Extension for Native Alerts (iOS + Android)
 ======================================
 
-This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensions-for-air.html) for displaying native alerts on iOS and Android. It has been developed by [FreshPlanet](http://freshplanet.com) and is used in the game [SongPop](http://songpop.fm).
+This is an [Air native extension](http://www.adobe.com/devnet/air/native-extensions-for-air.html) for displaying native alerts on iOS and Android. It has been developed by [FreshPlanet](http://freshplanet.com).
 
 
 Installation
