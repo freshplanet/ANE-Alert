@@ -31,7 +31,7 @@ This ANE currently supports displaying an alert popup with:
     ```
 
 Notes:
-* the theme used on Android is *AlertDialog.THEME_DEVICE_DEFAULT_DARK* (cf. http://developer.android.com/reference/android/app/AlertDialog.html)
+* the theme used on Android is *AlertDialog.THEME_DEVICE_DEFAULT_DARK* on Android 4.x, *AlertDialog.THEME_HOLO_DARK* on Android 3.x and no theme on Android 2.x (cf. http://developer.android.com/reference/android/app/AlertDialog.html)
 
 
 Build script
