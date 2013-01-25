@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAD66E7515D2C21A00BAA656 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD66E7415D2C21A00BAA656 /* Foundation.framework */; };
+		FAD66E7A15D2C21A00BAA656 /* AirAlert.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAD66E7915D2C21A00BAA656 /* AirAlert.h */; };
+		FAD66E7C15D2C21A00BAA656 /* AirAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD66E7B15D2C21A00BAA656 /* AirAlert.m */; };
+		FAD66EC315D2F62600BAA656 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD66EAC15D2F62600BAA656 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FAD66E6F15D2C21A00BAA656 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				FAD66E7A15D2C21A00BAA656 /* AirAlert.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FAD66E7115D2C21A00BAA656 /* libAirAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAirAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAD66E7415D2C21A00BAA656 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAD66E7815D2C21A00BAA656 /* AirAlert-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirAlert-Prefix.pch"; sourceTree = "<group>"; };
+		FAD66E7915D2C21A00BAA656 /* AirAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirAlert.h; sourceTree = "<group>"; };
+		FAD66E7B15D2C21A00BAA656 /* AirAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirAlert.m; sourceTree = "<group>"; };
+		FAD66E8515D2CA3400BAA656 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "/Applications/Adobe Flash Builder 4.6/sdks/4.6.0/include/FlashRuntimeExtensions.h"; sourceTree = "<absolute>"; };
+		FAD66EAC15D2F62600BAA656 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAD66E6E15D2C21A00BAA656 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAD66E7515D2C21A00BAA656 /* Foundation.framework in Frameworks */,
+				FAD66EC315D2F62600BAA656 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAD66E6615D2C21A00BAA656 = {
+			isa = PBXGroup;
+			children = (
+				FAD66E7615D2C21A00BAA656 /* AirAlert */,
+				FAD66E7315D2C21A00BAA656 /* Frameworks */,
+				FAD66E7215D2C21A00BAA656 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAD66E7215D2C21A00BAA656 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAD66E7115D2C21A00BAA656 /* libAirAlert.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAD66E7315D2C21A00BAA656 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAD66E8515D2CA3400BAA656 /* FlashRuntimeExtensions.h */,
+				FAD66E7415D2C21A00BAA656 /* Foundation.framework */,
+				FAD66EAC15D2F62600BAA656 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAD66E7615D2C21A00BAA656 /* AirAlert */ = {
+			isa = PBXGroup;
+			children = (
+				FAD66E7915D2C21A00BAA656 /* AirAlert.h */,
+				FAD66E7B15D2C21A00BAA656 /* AirAlert.m */,
+				FAD66E7715D2C21A00BAA656 /* Supporting Files */,
+			);
+			name = AirAlert;
+			path = AirBurstly;
+			sourceTree = "<group>";
+		};
+		FAD66E7715D2C21A00BAA656 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAD66E7815D2C21A00BAA656 /* AirAlert-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAD66E7015D2C21A00BAA656 /* AirAlert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAD66E7F15D2C21A00BAA656 /* Build configuration list for PBXNativeTarget "AirAlert" */;
+			buildPhases = (
+				FAD66E6D15D2C21A00BAA656 /* Sources */,
+				FAD66E6E15D2C21A00BAA656 /* Frameworks */,
+				FAD66E6F15D2C21A00BAA656 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirAlert;
+			productName = AirBurstly;
+			productReference = FAD66E7115D2C21A00BAA656 /* libAirAlert.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAD66E6815D2C21A00BAA656 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = FreshPlanet;
+			};
+			buildConfigurationList = FAD66E6B15D2C21A00BAA656 /* Build configuration list for PBXProject "AirAlert" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAD66E6615D2C21A00BAA656;
+			productRefGroup = FAD66E7215D2C21A00BAA656 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAD66E7015D2C21A00BAA656 /* AirAlert */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAD66E6D15D2C21A00BAA656 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAD66E7C15D2C21A00BAA656 /* AirAlert.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FAD66E7D15D2C21A00BAA656 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-weak-library",
+					/usr/lib/libSystem.B.dylib,
+					"-weak-framework",
+					MessageUI,
+					"-weak_framework",
+					CoreTelephony,
+					"-weak_framework",
+					CoreMotion,
+					"-weak_framework",
+					EventKit,
+					"-weak_framework",
+					MediaPlayer,
+					"-weak_framework",
+					UIKit,
+					"-weak_framework",
+					iAd,
+				);
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FAD66E7E15D2C21A00BAA656 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-weak-library",
+					/usr/lib/libSystem.B.dylib,
+					"-weak-framework",
+					MessageUI,
+					"-weak_framework",
+					CoreTelephony,
+					"-weak_framework",
+					CoreMotion,
+					"-weak_framework",
+					EventKit,
+					"-weak_framework",
+					MediaPlayer,
+					"-weak_framework",
+					UIKit,
+					"-weak_framework",
+					iAd,
+				);
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAD66E8015D2C21A00BAA656 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/AirBurstly.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AirBurstly/AirAlert-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/burstly-sdk\"",
+					"\"$(SRCROOT)/inmobi-sdk\"",
+					"\"$(SRCROOT)/burstly-sdk-old\"",
+					"\"$(SRCROOT)/burstly-sdk-new\"",
+					"\"$(SRCROOT)/BurstlySDK\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AirAlert;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FAD66E8115D2C21A00BAA656 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/AirBurstly.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AirBurstly/AirAlert-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/burstly-sdk\"",
+					"\"$(SRCROOT)/inmobi-sdk\"",
+					"\"$(SRCROOT)/burstly-sdk-old\"",
+					"\"$(SRCROOT)/burstly-sdk-new\"",
+					"\"$(SRCROOT)/BurstlySDK\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AirAlert;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAD66E6B15D2C21A00BAA656 /* Build configuration list for PBXProject "AirAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAD66E7D15D2C21A00BAA656 /* Debug */,
+				FAD66E7E15D2C21A00BAA656 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAD66E7F15D2C21A00BAA656 /* Build configuration list for PBXNativeTarget "AirAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAD66E8015D2C21A00BAA656 /* Debug */,
+				FAD66E8115D2C21A00BAA656 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAD66E6815D2C21A00BAA656 /* Project object */;
+}
