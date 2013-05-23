@@ -20,6 +20,12 @@
 
 FREContext AirAlertCtx = nil;
 
+@interface AirAlert ()
+
+@property (nonatomic, strong) UIAlertView *alertView;
+
+@end
+
 @implementation AirAlert
 
 #pragma mark - Singleton
@@ -43,6 +49,14 @@ static AirAlert *sharedInstance = nil;
 - (id)copy
 {
     return self;
+}
+
+#pragma mark - NSObject
+
+- (void)dealloc
+{
+    self.alertView = nil;
+    [super dealloc];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -98,9 +112,25 @@ DEFINE_ANE_FUNCTION(AirAlertShowAlert)
     }
     
     // Setup and show the alert
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:[AirAlert sharedInstance] cancelButtonTitle:button1 otherButtonTitles:nil];
+    __block UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:[AirAlert sharedInstance] cancelButtonTitle:button1 otherButtonTitles:nil];
     if (button2) [alertView addButtonWithTitle:button2];
-    [alertView show];
+    [[AirAlert sharedInstance] setAlertView:alertView];
+    [alertView release];
+    
+    // We had cases of deadlock when calling directly [alertView show] on iOS 5.
+    // When this happens, the app freezes completely without crashing, and the popup is not displayed.
+    //
+    // Explicitely calling [alertView show] on the main thread fixes the issue. ANE functions are
+    // supposed to be called on the main thread so we shouldn't need to do this... But hey, it works!
+    //
+    // Tested on an iPod Touch (2010) on iOS 5.1.1 with AIR 3.6, AIR 3.7 and AIR 3.8b.
+    //
+    // Console logs:
+    //      <Warning>: *** -[NSLock lock]: deadlock (<NSLock: 0xd5d420> '(null)')
+    //      <Warning>: *** Break on _NSLockError() to debug.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [alertView show];
+    });
     
     return nil;
 }
