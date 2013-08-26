@@ -67,7 +67,7 @@ public class AirAlertShowAlert implements FREFunction
 		}
 		
 		// Setup and show the alert
-		alertBuilder.setTitle(title).setMessage(message).setNeutralButton(button1, Extension.context);
+		alertBuilder.setTitle(title).setMessage(message).setCancelable(false).setNeutralButton(button1, Extension.context);
 		if (button2 != null) alertBuilder.setPositiveButton(button2, Extension.context);
 		alertBuilder.show();
 		
