@@ -23,12 +23,13 @@ import java.util.Map;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.freshplanet.alert.functions.AirAlertShowAlert;
 
-public class ExtensionContext extends FREContext implements OnClickListener
+public class ExtensionContext extends FREContext implements OnClickListener, OnCancelListener
 {
 	// Public API
 	
@@ -50,5 +51,10 @@ public class ExtensionContext extends FREContext implements OnClickListener
 		String buttonIndex = (which == DialogInterface.BUTTON_POSITIVE) ? "1" : "0";
 		
 		dispatchStatusEventAsync("CLICK", buttonIndex);
+	}
+
+	public void onCancel(DialogInterface dialog)
+	{
+		dispatchStatusEventAsync("CLICK", "0");
 	}
 }
