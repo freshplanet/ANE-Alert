@@ -22,11 +22,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
+import com.freshplanet.alert.functions.AirAlertSetTheme;
 import com.freshplanet.alert.functions.AirAlertShowAlert;
 
 public class ExtensionContext extends FREContext implements OnClickListener, OnCancelListener
@@ -42,6 +43,7 @@ public class ExtensionContext extends FREContext implements OnClickListener, OnC
 		Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
 		
 		functionMap.put("AirAlertShowAlert", new AirAlertShowAlert());
+		functionMap.put("AirAlertSetTheme", new AirAlertSetTheme());
 		
 		return functionMap;	
 	}

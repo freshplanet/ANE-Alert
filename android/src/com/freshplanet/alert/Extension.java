@@ -24,6 +24,7 @@ import com.adobe.fre.FREExtension;
 public class Extension implements FREExtension
 {
 	public static ExtensionContext context;
+	public static String theme = null;
 	
 	public FREContext createContext(String extId)
 	{
@@ -35,7 +36,6 @@ public class Extension implements FREExtension
 
 	public void dispose()
 	{
-		context = null;
 	}
 	
 	public static void log(String message)
