@@ -27,12 +27,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		169A52081A5F4AD400BBA5C8 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
 		FAD66E7115D2C21A00BAA656 /* libAirAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAirAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD66E7415D2C21A00BAA656 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FAD66E7815D2C21A00BAA656 /* AirAlert-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirAlert-Prefix.pch"; sourceTree = "<group>"; };
 		FAD66E7915D2C21A00BAA656 /* AirAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirAlert.h; sourceTree = "<group>"; };
 		FAD66E7B15D2C21A00BAA656 /* AirAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirAlert.m; sourceTree = "<group>"; };
-		FAD66E8515D2CA3400BAA656 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "/Applications/Adobe Flash Builder 4.6/sdks/4.6.0/include/FlashRuntimeExtensions.h"; sourceTree = "<absolute>"; };
 		FAD66EAC15D2F62600BAA656 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -69,7 +69,6 @@
 		FAD66E7315D2C21A00BAA656 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAD66E8515D2CA3400BAA656 /* FlashRuntimeExtensions.h */,
 				FAD66E7415D2C21A00BAA656 /* Foundation.framework */,
 				FAD66EAC15D2F62600BAA656 /* UIKit.framework */,
 			);
@@ -79,6 +78,7 @@
 		FAD66E7615D2C21A00BAA656 /* AirAlert */ = {
 			isa = PBXGroup;
 			children = (
+				169A52081A5F4AD400BBA5C8 /* FlashRuntimeExtensions.h */,
 				FAD66E7915D2C21A00BAA656 /* AirAlert.h */,
 				FAD66E7B15D2C21A00BAA656 /* AirAlert.m */,
 				FAD66E7715D2C21A00BAA656 /* Supporting Files */,
