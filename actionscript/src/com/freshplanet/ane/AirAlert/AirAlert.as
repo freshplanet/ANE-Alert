@@ -36,6 +36,7 @@ package com.freshplanet.ane.AirAlert
 		{
 			return Capabilities.manufacturer.indexOf("iOS") != -1 || Capabilities.manufacturer.indexOf("Android") != -1;
 		}
+											
 		
 		public function AirAlert()
 		{
@@ -62,6 +63,8 @@ package com.freshplanet.ane.AirAlert
 			return _instance ? _instance : new AirAlert();
 		}
 		
+		
+		
 		public function showAlert( title : String, message : String, button1 : String = "OK", callback1 : Function = null, button2 : String = null, callback2 : Function = null ) : void
 		{
 			if (!isSupported) return;
@@ -71,6 +74,20 @@ package com.freshplanet.ane.AirAlert
 			
 			if (button2 == null) _context.call("AirAlertShowAlert", title, message, button1);
 			else _context.call("AirAlertShowAlert", title, message, button1, button2);
+		}
+		
+		
+		
+		/** Alert skin theme (only android) */
+		public static const THEME_DARK : String = "DARK";
+		public static const THEME_LIGHT : String = "LIGHT";
+		
+		public function setTheme($theme:String) : void
+		{
+			if ( Capabilities.manufacturer.indexOf("Android") != -1 )
+			{
+				_context.call("AirAlertSetTheme", $theme);
+			}
 		}
 		
 		

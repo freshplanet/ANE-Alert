@@ -27,12 +27,13 @@ import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.freshplanet.alert.Extension;
 
-@TargetApi(14)
+@TargetApi(18)
 public class AirAlertShowAlert implements FREFunction
 {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args)
 	{
+		
 		// Retrieve alert parameters
 		String title = null;
 		String message = null;
@@ -53,18 +54,35 @@ public class AirAlertShowAlert implements FREFunction
 		
 		// Create alert builder with a theme depending on Android version
 		AlertDialog.Builder alertBuilder;
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+		
+		int themeDevice;
+		int themeHold;
+		if ( "LIGHT".equals ( Extension.theme ) )
 		{
-			alertBuilder = new AlertDialog.Builder(context.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+			//	Theme "Light"
+			themeDevice = AlertDialog.THEME_DEVICE_DEFAULT_LIGHT;
+			themeHold = AlertDialog.THEME_HOLO_LIGHT;
+		} else {
+			//	Theme "Dark"
+			themeDevice = AlertDialog.THEME_DEVICE_DEFAULT_DARK;
+			themeHold = AlertDialog.THEME_HOLO_DARK;
 		}
-		else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+			
+		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH )
 		{
-			alertBuilder = new AlertDialog.Builder(context.getActivity(), AlertDialog.THEME_HOLO_DARK);
+			alertBuilder = new AlertDialog.Builder(context.getActivity(), themeDevice);
+		}
+		else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB )
+		{
+			alertBuilder = new AlertDialog.Builder(context.getActivity(), themeHold);
 		}
 		else
 		{
 			alertBuilder = new AlertDialog.Builder(context.getActivity());
 		}
+		
+		
+		
 		
 		// Setup and show the alert
 		alertBuilder.setTitle(title).setMessage(message).setNeutralButton(button1, Extension.context).setOnCancelListener(Extension.context);
