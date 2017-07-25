@@ -24,10 +24,10 @@ This ANE currently supports displaying an alert popup with:
     var myCallback2:Function = function():void { trace("Callback 2"); };
 
     // Display a one-button alert popup
-    AirAlert.getInstance().showAlert("My title", "My message", "OK", myCallback1);
+    AirAlert.instance.showAlert("My title", "My message", "OK", myCallback1);
 
     // Display a two-button alert popup
-    AirAlert.getInstance().showAlert("My title", "My message", "YES", myCallback1, "NO", myCallback2);
+    AirAlert.instance.showAlert("My title", "My message", "YES", myCallback1, "NO", myCallback2);
     ```
 
 Notes:
@@ -49,7 +49,7 @@ Should you need to edit the extension source code and/or recompile it, you will 
 Authors
 ------
 
-This ANE has been written by [Alexis Taugeron](http://alexistaugeron.com). It belongs to [FreshPlanet Inc.](http://freshplanet.com) and is distributed under the [Apache Licence, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+This ANE has been written by [Alexis Taugeron](http://alexistaugeron.com) and [Mateo Kozomara](mateo.kozomara@gmail.com). It belongs to [FreshPlanet Inc.](http://freshplanet.com) and is distributed under the [Apache Licence, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 
 Join the FreshPlanet team - GAME DEVELOPMENT in NYC
