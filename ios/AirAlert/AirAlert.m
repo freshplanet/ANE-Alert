@@ -57,14 +57,14 @@ DEFINE_ANE_FUNCTION(showAlert) {
     AirAlert* controller = GetAirAlertContextNativeData(context);
     
     if (!controller)
-        return FPANE_CreateError(@"context's AirAlert is null", 0);
+        return AirAlert_FPANE_CreateError(@"context's AirAlert is null", 0);
     
     @try {
         
-        NSString *title = FPANE_FREObjectToNSString(argv[0]);
-        NSString *message = FPANE_FREObjectToNSString(argv[1]);
-        NSString *button1 = FPANE_FREObjectToNSString(argv[2]);
-        NSString *button2 = argc > 3 ? FPANE_FREObjectToNSString(argv[3]) : nil;
+        NSString *title = AirAlert_FPANE_FREObjectToNSString(argv[0]);
+        NSString *message = AirAlert_FPANE_FREObjectToNSString(argv[1]);
+        NSString *button1 = AirAlert_FPANE_FREObjectToNSString(argv[2]);
+        NSString *button2 = argc > 3 ? AirAlert_FPANE_FREObjectToNSString(argv[3]) : nil;
         
         
         UIViewController* rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];

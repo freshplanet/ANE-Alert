@@ -20,24 +20,24 @@
 #define MAP_FUNCTION(fn, data) { (const uint8_t*)(#fn), (data), &(fn) }
 #define ROOT_VIEW_CONTROLLER [[[UIApplication sharedApplication] keyWindow] rootViewController]
 
-void FPANE_DispatchEvent(FREContext context, NSString* eventName);
-void FPANE_DispatchEventWithInfo(FREContext context, NSString* eventName, NSString* eventInfo);
-void FPANE_Log(FREContext context, NSString* message);
+void AirAlert_FPANE_DispatchEvent(FREContext context, NSString* eventName);
+void AirAlert_FPANE_DispatchEventWithInfo(FREContext context, NSString* eventName, NSString* eventInfo);
+void AirAlert_FPANE_Log(FREContext context, NSString* message);
 
-NSString* FPANE_FREObjectToNSString(FREObject object);
-NSArray* FPANE_FREObjectToNSArrayOfNSString(FREObject object);
-NSDictionary* FPANE_FREObjectsToNSDictionaryOfNSString(FREObject keys, FREObject values);
-BOOL FPANE_FREObjectToBool(FREObject object);
-NSInteger FPANE_FREObjectToInt(FREObject object);
-double FPANE_FREObjectToDouble(FREObject object);
+NSString* AirAlert_FPANE_FREObjectToNSString(FREObject object);
+NSArray* AirAlert_FPANE_FREObjectToNSArrayOfNSString(FREObject object);
+NSDictionary* AirAlert_FPANE_FREObjectsToNSDictionaryOfNSString(FREObject keys, FREObject values);
+BOOL AirAlert_FPANE_FREObjectToBool(FREObject object);
+NSInteger AirAlert_FPANE_FREObjectToInt(FREObject object);
+double AirAlert_FPANE_FREObjectToDouble(FREObject object);
 
-FREObject FPANE_BOOLToFREObject(BOOL boolean);
-FREObject FPANE_IntToFREObject(NSInteger i);
-FREObject FPANE_DoubleToFREObject(double d);
-FREObject FPANE_NSStringToFREObject(NSString* string);
-FREObject FPANE_CreateError(NSString* error, NSInteger* id);
-FREObject FPANE_UIImageToFREBitmapData(UIImage *image);
-FREObject FPANE_UIImageToFREByteArray(UIImage *image);
+FREObject AirAlert_FPANE_BOOLToFREObject(BOOL boolean);
+FREObject AirAlert_FPANE_IntToFREObject(NSInteger i);
+FREObject AirAlert_FPANE_DoubleToFREObject(double d);
+FREObject AirAlert_FPANE_NSStringToFREObject(NSString* string);
+FREObject AirAlert_FPANE_CreateError(NSString* error, NSInteger* id);
+FREObject AirAlert_FPANE_UIImageToFREBitmapData(UIImage *image);
+FREObject AirAlert_FPANE_UIImageToFREByteArray(UIImage *image);
 
-UIImage* FPANE_FREBitmapDataToUIImage(FREObject object);
-NSArray* FPANE_FREObjectToNSArrayOfUIImage(FREObject object);
+UIImage* AirAlert_FPANE_FREBitmapDataToUIImage(FREObject object);
+NSArray* AirAlert_FPANE_FREObjectToNSArrayOfUIImage(FREObject object);
