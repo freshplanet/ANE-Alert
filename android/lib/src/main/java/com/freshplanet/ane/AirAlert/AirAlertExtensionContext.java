@@ -19,13 +19,10 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.freshplanet.ane.AirAlert.functions.ShowAlertFunction;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnCancelListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AirAlertExtensionContext extends FREContext implements OnClickListener, OnCancelListener {
+public class AirAlertExtensionContext extends FREContext {
 	@Override
 	public void dispose()
 	{
@@ -39,15 +36,4 @@ public class AirAlertExtensionContext extends FREContext implements OnClickListe
 		functions.put("showAlert", new ShowAlertFunction());
 		return functions;	
 	}
-
-	public void onClick(DialogInterface dialog, int which) {
-		String buttonIndex = (which == DialogInterface.BUTTON_POSITIVE) ? "1" : "0";
-		dispatchStatusEventAsync("CLICK", buttonIndex);
-	}
-
-	public void onCancel(DialogInterface dialog)
-	{
-		dispatchStatusEventAsync("CLICK", "0");
-	}
-
 }

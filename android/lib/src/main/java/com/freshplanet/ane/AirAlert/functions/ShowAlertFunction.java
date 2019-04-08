@@ -21,22 +21,40 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREObject;
 import com.freshplanet.ane.AirAlert.AirAlertExtension;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
+
+
 public class ShowAlertFunction extends BaseFunction {
-	public FREObject call(FREContext context, FREObject[] args) {
+	public FREObject call(final FREContext context, FREObject[] args) {
 		super.call(context, args);
 
 		String title = getStringFromFREObject(args[0]);
 		String message = getStringFromFREObject(args[1]);
 		String button1 = getStringFromFREObject(args[2]);
-		String button2 = args.length > 3 ? getStringFromFREObject(args[3]) : null;
+		final boolean hasButton2 = args.length > 3;
+		String button2 = hasButton2 ? getStringFromFREObject(args[3]) : null;
 
 		// Create alert builder with a theme depending on Android version
 		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context.getActivity());
 
 		// Setup and show the alert
-		alertBuilder.setTitle(title).setMessage(message).setNeutralButton(button1, AirAlertExtension.context).setOnCancelListener(AirAlertExtension.context);
+		alertBuilder.setTitle(title).setMessage(message).setNeutralButton(button1, new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				context.dispatchStatusEventAsync("CLICK", "0");
+			}
+		}).setOnCancelListener(new OnCancelListener() {
+			public void onCancel(DialogInterface dialog) {			
+				context.dispatchStatusEventAsync("CLICK", hasButton2?"1":"0");
+			}
+		});
 		if (button2 != null) {
-			alertBuilder.setPositiveButton(button2, AirAlertExtension.context);
+			alertBuilder.setPositiveButton(button2, new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					context.dispatchStatusEventAsync("CLICK", "1");
+				}
+			});
 		}
 
 		AlertDialog alertDialog = alertBuilder.create();
@@ -44,7 +62,6 @@ public class ShowAlertFunction extends BaseFunction {
 		alertDialog.show();
 
 		return null;
-
 	}
 
 }
