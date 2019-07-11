@@ -16,6 +16,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "FPANEUtils.h"
+#import "AirPicker.h"
 
 @interface AirAlert : NSObject {
     FREContext _context;

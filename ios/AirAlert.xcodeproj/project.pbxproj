@@ -11,6 +11,7 @@
 		A20E21181F279233001FDB1C /* AirAlert.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A20E21151F279233001FDB1C /* AirAlert.h */; };
 		A20E21211F2792A3001FDB1C /* FPANEUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A20E21201F2792A3001FDB1C /* FPANEUtils.m */; };
 		DFA751A9BDEEA285905F1A6D /* libPods-AirAlert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93AAB0960C0B95100A05A7F /* libPods-AirAlert.a */; };
+		FA24606B22D502030004904A /* AirPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FA24606A22D502030004904A /* AirPicker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,8 @@
 		A20E21201F2792A3001FDB1C /* FPANEUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPANEUtils.m; sourceTree = "<group>"; };
 		A93AAB0960C0B95100A05A7F /* libPods-AirAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirAlert.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88585E4E69605DC35294E1A /* Pods-AirAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirAlert.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirAlert/Pods-AirAlert.release.xcconfig"; sourceTree = "<group>"; };
+		FA24606922D502030004904A /* AirPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirPicker.h; sourceTree = "<group>"; };
+		FA24606A22D502030004904A /* AirPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirPicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 			children = (
 				A20E21151F279233001FDB1C /* AirAlert.h */,
 				A20E21161F279233001FDB1C /* AirAlert.m */,
+				FA24606922D502030004904A /* AirPicker.h */,
+				FA24606A22D502030004904A /* AirPicker.m */,
 			);
 			path = AirAlert;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20E21211F2792A3001FDB1C /* FPANEUtils.m in Sources */,
+				FA24606B22D502030004904A /* AirPicker.m in Sources */,
 				A20E21171F279233001FDB1C /* AirAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

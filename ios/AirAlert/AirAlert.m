@@ -98,15 +98,20 @@ DEFINE_ANE_FUNCTION(showAlert) {
 void AirAlertContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx,
                                       uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet) {
     
+    
     AirAlert* controller = [[AirAlert alloc] initWithContext:ctx];
     FRESetContextNativeData(ctx, (void*)CFBridgingRetain(controller));
     
-    static FRENamedFunction functions[] = {
-        MAP_FUNCTION(showAlert, NULL)
-    };
-    
-    *numFunctionsToTest = sizeof(functions) / sizeof(FRENamedFunction);
-    *functionsToSet = functions;
+    if (strcmp((char*)ctxType, "picker") == 0)
+        AirPickerListFunctions(functionsToSet, numFunctionsToTest);
+    else {
+        static FRENamedFunction functions[] = {
+            MAP_FUNCTION(showAlert, NULL)
+        };
+        
+        *numFunctionsToTest = sizeof(functions) / sizeof(FRENamedFunction);
+        *functionsToSet = functions;
+    }
     
 }
 
