@@ -28,7 +28,6 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 import com.freshplanet.ane.AirAlert.AirAlertExtension;
-import com.freshplanet.ane.AirAlert.AirAlertExtensionContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ import java.util.List;
 public class BaseFunction implements FREFunction {
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) {
-		AirAlertExtension.context = (AirAlertExtensionContext) context;
+		AirAlertExtension.context = context;
 		return null;
 	}
 	

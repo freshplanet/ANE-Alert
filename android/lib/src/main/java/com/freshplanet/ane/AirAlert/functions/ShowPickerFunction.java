@@ -13,26 +13,27 @@
  * limitations under the License.
  */
 
-package com.freshplanet.ane.AirAlert;
+package com.freshplanet.ane.AirAlert.functions;
 
+import android.view.ViewGroup;
 
 import com.adobe.fre.FREContext;
-import com.adobe.fre.FREExtension;
+import com.adobe.fre.FREObject;
+import com.freshplanet.ane.AirAlert.AirPickerExtensionContext;
 
-public class AirAlertExtension implements FREExtension {
-	public static FREContext context;
 
-	public FREContext createContext(String extId) {
-		if(extId.equals("picker"))
-			return context = new AirPickerExtensionContext();
+public class ShowPickerFunction extends BaseFunction {
+	public FREObject call(FREContext context, FREObject[] args) {
+		super.call(context, args);
 
-		return context = new AirAlertExtensionContext();
+		if(AirPickerExtensionContext.pickerControl != null) {
+			ViewGroup rootContainer = context.getActivity().findViewById(android.R.id.content);
+			rootContainer = (ViewGroup) rootContainer.getChildAt(0);
+			rootContainer.addView(AirPickerExtensionContext.pickerControl);
+		}
+
+		return null;
 
 	}
 
-	public void dispose() {
-		context = null;
-	}
-	
-	public void initialize() {}
 }

@@ -15,21 +15,21 @@
 
 package com.freshplanet.ane.AirAlert;
 
+
+import android.view.ViewGroup;
+
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
-import com.freshplanet.ane.AirAlert.functions.ShowAlertFunction;
-
-
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnCancelListener;
-import android.util.Log;
+import com.freshplanet.ane.AirAlert.functions.HidePickerFunction;
+import com.freshplanet.ane.AirAlert.functions.InitPickerFunction;
+import com.freshplanet.ane.AirAlert.functions.ShowPickerFunction;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AirAlertExtensionContext extends FREContext implements OnClickListener, OnCancelListener {
+public class AirPickerExtensionContext extends FREContext {
 
+	public static ViewGroup pickerControl;
 	@Override
 	public void dispose()
 	{
@@ -39,18 +39,11 @@ public class AirAlertExtensionContext extends FREContext implements OnClickListe
 	@Override
 	public Map<String, FREFunction> getFunctions() {
 		Map<String, FREFunction> functions = new HashMap<String, FREFunction>();
-		functions.put("showAlert", new ShowAlertFunction());
+		functions.put("picker_init", new InitPickerFunction());
+		functions.put("picker_show", new ShowPickerFunction());
+		functions.put("picker_hide", new HidePickerFunction());
 		return functions;
 	}
 
-	public void onClick(DialogInterface dialog, int which) {
-		String buttonIndex = (which == DialogInterface.BUTTON_POSITIVE) ? "1" : "0";
-		dispatchStatusEventAsync("CLICK", buttonIndex);
-	}
-
-	public void onCancel(DialogInterface dialog)
-	{
-		dispatchStatusEventAsync("CLICK", "0");
-	}
 
 }

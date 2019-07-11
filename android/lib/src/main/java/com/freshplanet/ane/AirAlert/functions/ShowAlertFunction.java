@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREObject;
 import com.freshplanet.ane.AirAlert.AirAlertExtension;
+import com.freshplanet.ane.AirAlert.AirAlertExtensionContext;
 
 public class ShowAlertFunction extends BaseFunction {
 	public FREObject call(FREContext context, FREObject[] args) {
@@ -34,9 +35,9 @@ public class ShowAlertFunction extends BaseFunction {
 		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context.getActivity());
 
 		// Setup and show the alert
-		alertBuilder.setTitle(title).setMessage(message).setNeutralButton(button1, AirAlertExtension.context).setOnCancelListener(AirAlertExtension.context);
+		alertBuilder.setTitle(title).setMessage(message).setNeutralButton(button1, (AirAlertExtensionContext)AirAlertExtension.context).setOnCancelListener((AirAlertExtensionContext)AirAlertExtension.context);
 		if (button2 != null) {
-			alertBuilder.setPositiveButton(button2, AirAlertExtension.context);
+			alertBuilder.setPositiveButton(button2, (AirAlertExtensionContext)AirAlertExtension.context);
 		}
 
 		AlertDialog alertDialog = alertBuilder.create();
