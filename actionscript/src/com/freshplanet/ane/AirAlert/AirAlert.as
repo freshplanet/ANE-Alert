@@ -17,6 +17,7 @@ package com.freshplanet.ane.AirAlert {
 	import flash.events.EventDispatcher;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
+	import flash.geom.Rectangle;
 	import flash.system.Capabilities;
 	
 	public class AirAlert extends EventDispatcher {
@@ -57,7 +58,19 @@ package com.freshplanet.ane.AirAlert {
 			if (button2 == null) _context.call("showAlert", title, message, button1);
 			else _context.call("showAlert", title, message, button1, button2);
 		}
-		
+
+
+		public function createPicker(frame:Rectangle, items:Array, doneLabel:String, cancelLabel:String, selectedCallback:Function):AirPicker {
+
+			if (!isSupported)
+				return null;
+
+			var ctx:ExtensionContext = ExtensionContext.createExtensionContext(EXTENSION_ID,
+					EXTENSION_CONTEXT_PICKER);
+			ctx.call("picker_init", doneLabel, cancelLabel, frame.x, frame.y, frame.width, frame.height, items.concat());
+			return new AirPicker(ctx, frame, items.concat(), doneLabel, cancelLabel, selectedCallback);
+
+		}
 		
 		// --------------------------------------------------------------------------------------//
 		//																						 //
@@ -66,7 +79,8 @@ package com.freshplanet.ane.AirAlert {
 		// --------------------------------------------------------------------------------------//
 		
 		private static const EXTENSION_ID : String = "com.freshplanet.ane.AirAlert";
-		
+		private static const EXTENSION_CONTEXT_PICKER:String       = "picker";
+
 		private static var _instance : AirAlert = null;
 		private var _context : ExtensionContext = null;
 		
