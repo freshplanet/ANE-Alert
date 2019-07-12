@@ -65,6 +65,30 @@ package com.freshplanet.ane.AirAlert {
 					_cancelCallback();
 			}
 		}
+		
 
+		public function get frame():Rectangle {
+			return _frame;
+		}
+
+		public function get items():Array {
+			return _items;
+		}
+
+		public function get doneLabel():String {
+			return _doneLabel;
+		}
+
+		public function get cancelLabel():String {
+			return _cancelLabel;
+		}
+
+		public function get selectedCallback():Function {
+			return _selectedCallback;
+		}
+
+		public function get cancelCallback():Function {
+			return _cancelCallback;
+		}
 	}
 }
