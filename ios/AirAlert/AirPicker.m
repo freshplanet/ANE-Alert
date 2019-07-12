@@ -40,9 +40,9 @@
     
     _toolbar = [[UIToolbar alloc] init];
     _toolbar.frame = CGRectMake(frame.origin.x, frame.origin.y-toolbarHeight, frame.size.width, toolbarHeight);
-    _toolbar.barStyle = UIBarStyleBlackTranslucent;
-    _toolbar.userInteractionEnabled = true;
-    _toolbar.tintColor = UIColor.whiteColor;
+    _toolbar.barStyle = UIBarStyleDefault;
+    _toolbar.userInteractionEnabled = true; 
+    [_pickerView selectRow:0 inComponent:0 animated:YES];
     
     UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithTitle:cancelLabel
                                                                    style:UIBarButtonItemStylePlain target:self
