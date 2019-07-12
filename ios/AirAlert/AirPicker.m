@@ -91,6 +91,7 @@
 -(void)cancelClicked
 {
     [self hidePicker];
+    [self sendEvent:@"PICKER_CANCELED"];
 }
 
 - (void)dealloc {

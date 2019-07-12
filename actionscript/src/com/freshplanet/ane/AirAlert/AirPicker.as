@@ -14,8 +14,9 @@ package com.freshplanet.ane.AirAlert {
 		private var _doneLabel:String = null;
 		private var _cancelLabel:String = null;
 		private var _selectedCallback:Function;
+		private var _cancelCallback:Function;
 
-		public function AirPicker(context:ExtensionContext, frame:Rectangle, items:Array, doneLabel:String, cancelLabel:String, selectedCallback:Function) {
+		public function AirPicker(context:ExtensionContext, frame:Rectangle, items:Array, doneLabel:String, cancelLabel:String, selectedCallback:Function, cancelCallback:Function) {
 			super();
 			_context = context;
 			_frame = frame;
@@ -23,6 +24,7 @@ package com.freshplanet.ane.AirAlert {
 			_doneLabel = doneLabel;
 			_cancelLabel = cancelLabel;
 			_selectedCallback = selectedCallback;
+			_cancelCallback = cancelCallback;
 			_context.addEventListener(StatusEvent.STATUS, handleStatusEvent);
 		}
 
@@ -33,6 +35,7 @@ package com.freshplanet.ane.AirAlert {
 			_context = null;
 			_frame = null;
 			_selectedCallback = null;
+			_cancelCallback = null;
 			_doneLabel = null;
 			_cancelLabel = null;
 			_items = null;
@@ -56,6 +59,10 @@ package com.freshplanet.ane.AirAlert {
 			if (event.code == "PICKER_SELECTED") {
 				if(_selectedCallback)
 					_selectedCallback(event.level);
+			}
+			else if (event.code == "PICKER_CANCELED") {
+				if(_cancelCallback)
+					_cancelCallback();
 			}
 		}
 

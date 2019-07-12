@@ -60,7 +60,7 @@ package com.freshplanet.ane.AirAlert {
 		}
 
 
-		public function createPicker(frame:Rectangle, items:Array, doneLabel:String, cancelLabel:String, selectedCallback:Function):AirPicker {
+		public function createPicker(frame:Rectangle, items:Array, doneLabel:String, cancelLabel:String, selectedCallback:Function, cancelCallback:Function):AirPicker {
 
 			if (!isSupported)
 				return null;
@@ -68,7 +68,7 @@ package com.freshplanet.ane.AirAlert {
 			var ctx:ExtensionContext = ExtensionContext.createExtensionContext(EXTENSION_ID,
 					EXTENSION_CONTEXT_PICKER);
 			ctx.call("picker_init", doneLabel, cancelLabel, frame.x, frame.y, frame.width, frame.height, items.concat());
-			return new AirPicker(ctx, frame, items.concat(), doneLabel, cancelLabel, selectedCallback);
+			return new AirPicker(ctx, frame, items.concat(), doneLabel, cancelLabel, selectedCallback, cancelCallback);
 
 		}
 		

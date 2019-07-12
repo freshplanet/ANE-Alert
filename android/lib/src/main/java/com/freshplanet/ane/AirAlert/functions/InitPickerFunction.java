@@ -106,6 +106,7 @@ public class InitPickerFunction extends BaseFunction {
 					rootContainer = (ViewGroup) rootContainer.getChildAt(0);
 					rootContainer.removeView(AirPickerExtensionContext.pickerControl);
 				}
+				AirAlertExtension.context.dispatchStatusEventAsync("PICKER_CANCELED", "");
 
 			}
 		});
