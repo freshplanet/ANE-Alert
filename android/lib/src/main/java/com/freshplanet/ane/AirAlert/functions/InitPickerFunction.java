@@ -60,8 +60,7 @@ public class InitPickerFunction extends BaseFunction {
 		layout.setLayoutParams(layoutParams);
 
 		RelativeLayout toolbar = new RelativeLayout(context.getActivity().getApplicationContext());
-		toolbar.setBackgroundColor(Color.BLACK);
-		toolbar.getBackground().setAlpha(51);
+		toolbar.setBackgroundColor(Color.LTGRAY);
 		RelativeLayout.LayoutParams toolbarLayoutParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, toolbarHeight);
 		toolbar.setLayoutParams(toolbarLayoutParams);
 		toolbar.setY(0);
