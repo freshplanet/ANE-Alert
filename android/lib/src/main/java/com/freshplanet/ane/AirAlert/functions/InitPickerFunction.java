@@ -27,11 +27,9 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 
-
 import com.adobe.fre.FREArray;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREObject;
-import com.freshplanet.ane.AirAlert.AirAlertExtension;
 import com.freshplanet.ane.AirAlert.AirPickerExtensionContext;
 
 import java.util.List;
@@ -105,8 +103,11 @@ public class InitPickerFunction extends BaseFunction {
 					rootContainer = (ViewGroup) rootContainer.getChildAt(0);
 					rootContainer.removeView(AirPickerExtensionContext.pickerControl);
 				}
-				AirAlertExtension.context.dispatchStatusEventAsync("PICKER_CANCELED", "");
-
+				try {
+					finalContext.dispatchStatusEventAsync("PICKER_CANCELED", "");
+				} catch (IllegalStateException e) {
+					Log.e("AirAlert", "error dispatching event", e);
+				}
 			}
 		});
 
@@ -148,10 +149,11 @@ public class InitPickerFunction extends BaseFunction {
 
 				}
 				String selectedValue = items.get(numberPicker.getValue());
-				AirAlertExtension.context.dispatchStatusEventAsync("PICKER_SELECTED", selectedValue);
-
-
-
+				try {
+					finalContext.dispatchStatusEventAsync("PICKER_SELECTED", selectedValue);
+				} catch (IllegalStateException e) {
+					Log.e("AirAlert", "error dispatching event", e);
+				}
 			}
 		});
 
