@@ -18,26 +18,30 @@ package com.freshplanet.ane.AirAlert.functions;
 
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 
-
 import com.adobe.fre.FREArray;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREObject;
-import com.freshplanet.ane.AirAlert.AirAlertExtension;
 import com.freshplanet.ane.AirAlert.AirPickerExtensionContext;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 
 public class InitPickerFunction extends BaseFunction {
+
+
 	public FREObject call(FREContext context, FREObject[] args) {
 		super.call(context, args);
 
@@ -105,8 +109,11 @@ public class InitPickerFunction extends BaseFunction {
 					rootContainer = (ViewGroup) rootContainer.getChildAt(0);
 					rootContainer.removeView(AirPickerExtensionContext.pickerControl);
 				}
-				AirAlertExtension.context.dispatchStatusEventAsync("PICKER_CANCELED", "");
-
+				try {
+					finalContext.dispatchStatusEventAsync("PICKER_CANCELED", "");
+				} catch (IllegalStateException e) {
+					Log.e("AirAlert", "error dispatching event", e);
+				}
 			}
 		});
 
@@ -132,6 +139,7 @@ public class InitPickerFunction extends BaseFunction {
 		numberPicker.setX(0);
 		numberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 		numberPicker.setBackgroundColor(Color.WHITE);
+		setNumberPickerTextColor(numberPicker, Color.BLACK);
 		numberPicker.setMinValue(0);
 		numberPicker.setMaxValue(items.size()-1);
 		numberPicker.setDisplayedValues(items.toArray(new String[0]));
@@ -148,10 +156,11 @@ public class InitPickerFunction extends BaseFunction {
 
 				}
 				String selectedValue = items.get(numberPicker.getValue());
-				AirAlertExtension.context.dispatchStatusEventAsync("PICKER_SELECTED", selectedValue);
-
-
-
+				try {
+					finalContext.dispatchStatusEventAsync("PICKER_SELECTED", selectedValue);
+				} catch (IllegalStateException e) {
+					Log.e("AirAlert", "error dispatching event", e);
+				}
 			}
 		});
 
@@ -164,7 +173,25 @@ public class InitPickerFunction extends BaseFunction {
 
 	}
 
-
-
+	private static void setNumberPickerTextColor(NumberPicker numberPicker, int color){
+		final int count = numberPicker.getChildCount();
+		for (int i = 0; i < count; i++) {
+			View child = numberPicker.getChildAt(i);
+			if (child instanceof EditText) {
+				try {
+					((EditText) child).setTextColor(color);
+					numberPicker.invalidate();
+					Field selectorWheelPaintField = numberPicker.getClass().getDeclaredField("mSelectorWheelPaint");
+					boolean accessible = selectorWheelPaintField.isAccessible();
+					selectorWheelPaintField.setAccessible(true);
+					((Paint) selectorWheelPaintField.get(numberPicker)).setColor(color);
+					selectorWheelPaintField.setAccessible(accessible);
+					numberPicker.invalidate();
+				} catch (Exception exception) {
+					Log.e("AirAlert", "setNumberPickerTextColor", exception);
+				}
+			}
+		}
+	}
 
 }
