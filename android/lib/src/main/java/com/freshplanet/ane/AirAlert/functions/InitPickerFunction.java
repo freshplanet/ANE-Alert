@@ -143,7 +143,7 @@ public class InitPickerFunction extends BaseFunction {
 		numberPicker.setMinValue(0);
 		numberPicker.setMaxValue(items.size()-1);
 		numberPicker.setDisplayedValues(items.toArray(new String[0]));
-		numberPicker.setWrapSelectorWheel(true);
+		numberPicker.setWrapSelectorWheel(false);
 		layout.addView(numberPicker);
 
 		doneButton.setOnClickListener(new View.OnClickListener() {
