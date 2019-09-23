@@ -111,7 +111,7 @@ public class InitPickerFunction extends BaseFunction {
 				}
 				try {
 					finalContext.dispatchStatusEventAsync("PICKER_CANCELED", "");
-				} catch (IllegalStateException e) {
+				} catch (Exception e) {
 					Log.e("AirAlert", "error dispatching event", e);
 				}
 			}
