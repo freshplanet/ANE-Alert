@@ -144,6 +144,7 @@ public class InitPickerFunction extends BaseFunction {
 		numberPicker.setMaxValue(items.size()-1);
 		numberPicker.setDisplayedValues(items.toArray(new String[0]));
 		numberPicker.setWrapSelectorWheel(false);
+		numberPicker.setValue(0);
 		layout.addView(numberPicker);
 
 		doneButton.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +159,7 @@ public class InitPickerFunction extends BaseFunction {
 				String selectedValue = items.get(numberPicker.getValue());
 				try {
 					finalContext.dispatchStatusEventAsync("PICKER_SELECTED", selectedValue);
-				} catch (IllegalStateException e) {
+				} catch (Exception e) {
 					Log.e("AirAlert", "error dispatching event", e);
 				}
 			}
