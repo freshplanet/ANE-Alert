@@ -31,7 +31,23 @@
                 <initializer>com.freshplanet.ane.AirAlert.AirAlertExtension</initializer>
                 <finalizer>com.freshplanet.ane.AirAlert.AirAlertExtension</finalizer>
             </applicationDeployment>
-        </platform> 
+        </platform>
+
+        <platform name="Android-ARM64">
+            <applicationDeployment>
+                <nativeLibrary>libAirAlert.jar</nativeLibrary>
+                <initializer>com.freshplanet.ane.AirAlert.AirAlertExtension</initializer>
+                <finalizer>com.freshplanet.ane.AirAlert.AirAlertExtension</finalizer>
+            </applicationDeployment>
+        </platform>
+
+        <platform name="Android-x86">
+            <applicationDeployment>
+                <nativeLibrary>libAirAlert.jar</nativeLibrary>
+                <initializer>com.freshplanet.ane.AirAlert.AirAlertExtension</initializer>
+                <finalizer>com.freshplanet.ane.AirAlert.AirAlertExtension</finalizer>
+            </applicationDeployment>
+        </platform>
 
         <platform name="default"> 
             <applicationDeployment/> 
