@@ -36,7 +36,12 @@
     _pickerView.delegate = self;
     _pickerView.dataSource = self;
     _pickerView.showsSelectionIndicator = true;
-    _pickerView.backgroundColor = UIColor.whiteColor;
+    if ([NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){13,0,0}]) {
+        _pickerView.backgroundColor = UIColor.systemBackgroundColor;
+    }
+    else
+        _pickerView.backgroundColor = UIColor.whiteColor;
+    
     
     _toolbar = [[UIToolbar alloc] init];
     _toolbar.frame = CGRectMake(frame.origin.x, frame.origin.y-toolbarHeight, frame.size.width, toolbarHeight);
