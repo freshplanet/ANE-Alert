@@ -17,6 +17,7 @@
 #import <UIKit/UIKit.h>
 #import "FPANEUtils.h"
 #import "AirPicker.h"
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 @interface AirAlert : NSObject {
     FREContext _context;

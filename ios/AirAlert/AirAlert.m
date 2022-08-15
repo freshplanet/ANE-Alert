@@ -43,6 +43,26 @@
 - (void) sendEvent:(NSString*)code level:(NSString*)level {
     FREDispatchStatusEventAsync(_context, (const uint8_t*)[code UTF8String], (const uint8_t*)[level UTF8String]);
 }
+
+- (NSString*) attStatusToString:(ATTrackingManagerAuthorizationStatus)status  API_AVAILABLE(ios(14)){
+    
+    switch (status) {
+        case ATTrackingManagerAuthorizationStatusAuthorized:
+            return @"ATTrackingManagerAuthorizationStatusAuthorized";
+            break;
+        case ATTrackingManagerAuthorizationStatusRestricted:
+            return @"ATTrackingManagerAuthorizationStatusRestricted";
+        case ATTrackingManagerAuthorizationStatusDenied:
+            return @"ATTrackingManagerAuthorizationStatusDenied";
+        case ATTrackingManagerAuthorizationStatusNotDetermined:
+            return @"ATTrackingManagerAuthorizationStatusNotDetermined";
+        default:
+            break;
+    }
+    
+    return @"ATTrackingManagerAuthorizationStatusNotDetermined";
+    
+}
 @end
 
 AirAlert* GetAirAlertContextNativeData(FREContext context) {
@@ -93,6 +113,56 @@ DEFINE_ANE_FUNCTION(showAlert) {
     return nil;
 }
 
+DEFINE_ANE_FUNCTION(showATTPrompt) {
+    
+    AirAlert* controller = GetAirAlertContextNativeData(context);
+    
+    if (!controller)
+        return AirAlert_FPANE_CreateError(@"context's AirAlert is null", 0);
+    @try {
+        
+        if (@available(iOS 14, *)) {
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                [controller sendEvent:@"ATTStatus" level:[controller attStatusToString:status]];
+            }];
+        }
+        else {
+            [controller sendEvent:@"ATTStatus" level:@"ATTrackingManagerAuthorizationStatusNotSupported"];
+        }
+    }
+    @catch (NSException *exception) {
+        [controller sendLog:[@"Exception occured while trying to showATTPrompt : " stringByAppendingString:exception.reason]];
+    }
+    
+    
+    
+    return nil;
+}
+
+DEFINE_ANE_FUNCTION(getATTStatus) {
+    
+    AirAlert* controller = GetAirAlertContextNativeData(context);
+    
+    if (!controller)
+        return AirAlert_FPANE_CreateError(@"context's AirAlert is null", 0);
+    @try {
+        
+        if (@available(iOS 14, *)) {
+            return AirAlert_FPANE_NSStringToFREObject([controller attStatusToString:ATTrackingManager.trackingAuthorizationStatus]);
+        }
+        else {
+            return AirAlert_FPANE_NSStringToFREObject([controller attStatusToString:@"ATTrackingManagerAuthorizationStatusNotSupported"]);
+        }
+    }
+    @catch (NSException *exception) {
+        [controller sendLog:[@"Exception occured while trying to showATTPrompt : " stringByAppendingString:exception.reason]];
+    }
+    
+    
+    
+    return nil;
+}
+
 #pragma mark - ANE setup
 
 void AirAlertContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx,
@@ -106,7 +176,9 @@ void AirAlertContextInitializer(void* extData, const uint8_t* ctxType, FREContex
         AirPickerListFunctions(functionsToSet, numFunctionsToTest);
     else {
         static FRENamedFunction functions[] = {
-            MAP_FUNCTION(showAlert, NULL)
+            MAP_FUNCTION(showAlert, NULL),
+            MAP_FUNCTION(showATTPrompt, NULL),
+            MAP_FUNCTION(getATTStatus, NULL)
         };
         
         *numFunctionsToTest = sizeof(functions) / sizeof(FRENamedFunction);

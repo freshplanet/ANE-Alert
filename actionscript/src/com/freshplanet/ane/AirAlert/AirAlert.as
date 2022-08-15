@@ -14,6 +14,7 @@
  */
 
 package com.freshplanet.ane.AirAlert {
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
@@ -71,6 +72,19 @@ package com.freshplanet.ane.AirAlert {
 			return new AirPicker(ctx, frame, items.concat(), doneLabel, cancelLabel, selectedCallback, cancelCallback);
 
 		}
+
+		public function showATTPrompt():void {
+			if(isIOS) {
+				_context.call("showATTPrompt");
+			}
+		}
+
+		public function getATTStatus():String {
+			if(isIOS) {
+				return _context.call("getATTStatus") as String;
+			}
+			return null;
+		}
 		
 		// --------------------------------------------------------------------------------------//
 		//																						 //
@@ -117,6 +131,9 @@ package com.freshplanet.ane.AirAlert {
 				_callback2 = null;
 				
 				if (callback != null) callback();
+			}
+			else if(event.code == ATTStatusEvent.ATT_STATUS_RECEIVED) {
+				dispatchEvent(new ATTStatusEvent(event.code, event.level));
 			}
 		}
 
