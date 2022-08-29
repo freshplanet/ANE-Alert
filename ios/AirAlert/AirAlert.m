@@ -52,10 +52,13 @@
             break;
         case ATTrackingManagerAuthorizationStatusRestricted:
             return @"ATTrackingManagerAuthorizationStatusRestricted";
+            break;
         case ATTrackingManagerAuthorizationStatusDenied:
             return @"ATTrackingManagerAuthorizationStatusDenied";
+            break;
         case ATTrackingManagerAuthorizationStatusNotDetermined:
             return @"ATTrackingManagerAuthorizationStatusNotDetermined";
+            break;
         default:
             break;
     }
@@ -151,7 +154,7 @@ DEFINE_ANE_FUNCTION(getATTStatus) {
             return AirAlert_FPANE_NSStringToFREObject([controller attStatusToString:ATTrackingManager.trackingAuthorizationStatus]);
         }
         else {
-            return AirAlert_FPANE_NSStringToFREObject([controller attStatusToString:@"ATTrackingManagerAuthorizationStatusNotSupported"]);
+            return "@ATTrackingManagerAuthorizationStatusNotSupported";
         }
     }
     @catch (NSException *exception) {
