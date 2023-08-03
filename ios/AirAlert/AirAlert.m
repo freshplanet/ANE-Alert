@@ -124,7 +124,7 @@ DEFINE_ANE_FUNCTION(showATTPrompt) {
         return AirAlert_FPANE_CreateError(@"context's AirAlert is null", 0);
     @try {
         
-        if (@available(iOS 14, *)) {
+        if (@available(iOS 14.0, *)) {
             [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
                 [controller sendEvent:@"ATTStatus" level:[controller attStatusToString:status]];
             }];
@@ -150,8 +150,12 @@ DEFINE_ANE_FUNCTION(getATTStatus) {
         return AirAlert_FPANE_CreateError(@"context's AirAlert is null", 0);
     @try {
         
-        if (@available(iOS 14, *)) {
-            return AirAlert_FPANE_NSStringToFREObject([controller attStatusToString:ATTrackingManager.trackingAuthorizationStatus]);
+        if (@available(iOS 14.0, *)) {
+            NSString *status = [controller attStatusToString:ATTrackingManager.trackingAuthorizationStatus];
+            if(status == nil) {
+                status = @"@ATTrackingManagerAuthorizationStatusNotSupported";
+            }
+            return AirAlert_FPANE_NSStringToFREObject(status);
         }
         else {
             return "@ATTrackingManagerAuthorizationStatusNotSupported";
