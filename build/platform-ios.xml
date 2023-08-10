@@ -16,5 +16,6 @@
 <platform xmlns="http://ns.adobe.com/air/extension/22.0">
     <sdkVersion>11.0</sdkVersion>
     <linkerOptions>
+    <option>-lclang_rt.ios</option>
     </linkerOptions> 
 </platform>
