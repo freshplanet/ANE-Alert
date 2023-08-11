@@ -153,12 +153,12 @@ DEFINE_ANE_FUNCTION(getATTStatus) {
         if (@available(iOS 14.0, *)) {
             NSString *status = [controller attStatusToString:ATTrackingManager.trackingAuthorizationStatus];
             if(status == nil) {
-                status = @"@ATTrackingManagerAuthorizationStatusNotSupported";
+                status = @"ATTrackingManagerAuthorizationStatusNotSupported";
             }
             return AirAlert_FPANE_NSStringToFREObject(status);
         }
         else {
-            return "@ATTrackingManagerAuthorizationStatusNotSupported";
+            return AirAlert_FPANE_NSStringToFREObject(@"ATTrackingManagerAuthorizationStatusNotSupported");
         }
     }
     @catch (NSException *exception) {
